@@ -1,4 +1,6 @@
 import React from "react";
+//component
+import Questions from "../Questions/Questions"
 
 function Quiz() {
   const onPrevious = () => {
@@ -12,7 +14,10 @@ function Quiz() {
   return (
     <div className="container">
       <h1 className="title text-light">Quiz</h1>
+      
       {/* display questions */}
+      <Questions/>
+
       <div className="grid">
         <button onClick={onPrevious} className="btn prev">
           Previous
