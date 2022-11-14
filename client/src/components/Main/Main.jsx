@@ -17,8 +17,8 @@ function Main() {
         <li>The Result will be declared at the end of quiz</li>
       </ol>
 
-      <form>
-        <input ref={inputRef} type="text" placeholder="Username*" />
+      <form id="form">
+        <input ref={inputRef} className="userid" type="text" placeholder="Username*" />
       </form>
 
       <div className="start">
