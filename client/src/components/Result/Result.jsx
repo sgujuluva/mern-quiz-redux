@@ -1,5 +1,8 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+//components
+import ResultTable  from "../ResultTable/ResultTable.jsx"
+
 import "./Result.css"
 function Result() {
   const onRestart = () => {
@@ -30,9 +33,16 @@ console.log("on restart")
           <span>Total points</span>
           <span className='bold'>50</span>
         </div>
+        <div className="flex">
+          <span>Result</span>
+          <span className='bold'>Passed</span>
+        </div>
       </div>
       <div className="start">
         <Link className='btn' to={"/"} onClick={onRestart} >Restart</Link>
+      </div>
+      <div className="container">
+        <ResultTable/>
       </div>
       </div>
   )
