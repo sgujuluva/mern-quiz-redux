@@ -1,12 +1,14 @@
 import React from "react";
+import { MoveNextQuestion } from "../hooks/FetchQuestion";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 //component
 import Questions from "../Questions/Questions";
+import { moveNextAction } from "../Redux/QuestionReducers";
 
 function Quiz() {
   const {questions} = useSelector(state => state);
-
+const dispatch = useDispatch()
   useEffect(() => {
     console.log("the ques text is",questions);
   });
@@ -17,6 +19,7 @@ function Quiz() {
 
   const onNext = () => {
     console.log("on next click");
+    dispatch(MoveNextQuestion()) //update the currentquestionindex by 1
   };
 
   return (

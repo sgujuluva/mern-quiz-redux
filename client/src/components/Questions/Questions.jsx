@@ -9,11 +9,13 @@ import { useSelector } from "react-redux";
 function Questions() {
   const [checked, setChecked] = useState(undefined);
   const [{isLoading, apiData, serverError}] = useFetchQuestion();
-  
-  const questions = useSelector(state => state.questions.questions[state.questions.currentQuestionIndex]);
+
+const questions = useSelector(state => state.questions.questions[state.questions.currentQuestionIndex])
+
+//const question = data[0]
 
   useEffect(() => {
-    console.log("the ques text is",questions);
+    console.log("the state is",questions);
    
   });
 
@@ -30,8 +32,8 @@ return <h3 className="text-light">Server Error</h3>
   return (
     <div className="questions">
       <h2>{questions?.question}</h2>
-      <ul key={questions}>
-        {questions?.options.map((option, index) => (
+      <ul key={questions?.id}>
+        {questions.options.map((option, index) => (
           <li key={index}>
             <input
               type="radio"

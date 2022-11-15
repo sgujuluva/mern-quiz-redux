@@ -13,10 +13,16 @@ export const questionReducer = createSlice({
             ...state,  // have initial state and update the new value from user
             questions : action.payload  //user input value
         }
+    },
+    moveNextAction : (state) => {
+      return {
+        ...state,
+        currentQuestionIndex: state.currentQuestionIndex+1
+      }
     }
   }
 });
 
-export const {startQuizAction} = questionReducer.actions;
+export const {startQuizAction, moveNextAction} = questionReducer.actions;
 
 export default questionReducer.reducer
