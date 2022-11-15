@@ -8,7 +8,7 @@ function Quiz() {
   const {questions} = useSelector(state => state);
 
   useEffect(() => {
-    console.log("the ques text is",questions.questionsText);
+    console.log("the ques text is",questions);
   });
 
   const onPrevious = () => {
