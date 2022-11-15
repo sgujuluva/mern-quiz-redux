@@ -1,8 +1,16 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 //component
-import Questions from "../Questions/Questions"
+import Questions from "../Questions/Questions";
 
 function Quiz() {
+  const {questions} = useSelector(state => state);
+
+  useEffect(() => {
+    console.log("the ques text is",questions.questionsText);
+  });
+
   const onPrevious = () => {
     console.log("on previous click");
   };
@@ -14,9 +22,9 @@ function Quiz() {
   return (
     <div className="container">
       <h1 className="title text-light">Quiz</h1>
-      
+
       {/* display questions */}
-      <Questions/>
+      <Questions />
 
       <div className="grid">
         <button onClick={onPrevious} className="btn prev">
