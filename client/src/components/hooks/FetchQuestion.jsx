@@ -55,3 +55,13 @@ export const MoveNextQuestion = () => async(dispatch) => {
     console.log(error)
   }
 }
+
+//move action previous dispatch function
+
+export const MovePrevQuestion = () => async (dispatch) => {
+  try {
+    dispatch(Action.movePrevAction())
+  } catch (error) {
+    console.log(error)
+  }
+}

@@ -1,25 +1,37 @@
 import React from "react";
-import { MoveNextQuestion } from "../hooks/FetchQuestion";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 //component
 import Questions from "../Questions/Questions";
-import { moveNextAction } from "../Redux/QuestionReducers";
+//hooks
+import { MoveNextQuestion, MovePrevQuestion } from "../hooks/FetchQuestion";
+import {PushAnswer} from "../hooks/setResult"
 
 function Quiz() {
-  const {questions} = useSelector(state => state);
+  const state = useSelector(state => state);
+  const {queue,trace} = useSelector(state => state.questions);
+
 const dispatch = useDispatch()
+
   useEffect(() => {
-    console.log("the ques text is",questions);
+    console.log("current state in quiz comp is",state);
   });
 
   const onPrevious = () => {
     console.log("on previous click");
+    if(trace > 0){
+      dispatch(MovePrevQuestion())
+    }
   };
 
   const onNext = () => {
     console.log("on next click");
-    dispatch(MoveNextQuestion()) //update the currentquestionindex by 1
+
+    if(trace < queue.length){
+
+      dispatch(MoveNextQuestion()) //update the currentquestionindex by 1
+      dispatch(PushAnswer)
+    }
   };
 
   return (

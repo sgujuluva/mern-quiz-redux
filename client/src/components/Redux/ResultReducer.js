@@ -9,10 +9,13 @@ export const resultReducer = createSlice({
     reducers:{
         setuserId : (state,action) => {
             state.userId = action.payload // input from the user
+        },
+        pushResultAction : (state,action) => {
+            state.result.push(action.payload) //pushing the user selected answer to the result array
         }
     }
 })
 
-export const {setUserId} = resultReducer.actions;
+export const {setUserId, pushResultAction} = resultReducer.actions;
 
 export default resultReducer.reducer
