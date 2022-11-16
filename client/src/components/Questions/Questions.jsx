@@ -6,7 +6,7 @@ import "../Questions/Questions.css";
 import { useFetchQuestion } from "../hooks/FetchQuestion";
 import { useSelector } from "react-redux";
 
-function Questions() {
+function Questions({onChecked}) {
   const [checked, setChecked] = useState(undefined);
   const [{isLoading, apiData, serverError}] = useFetchQuestion();
 
@@ -21,8 +21,10 @@ const questions = useSelector(state => state.questions.queue[state.questions.tra
    // console.log("the trace is",trace);
   });
  
-   const onSelect = () => {
-    console.log("radio buttton change");
+  //selecting the user answer radio button by index
+   const onSelect = (index) => {
+
+    onChecked(index)
   };
 
 if(isLoading)
@@ -42,12 +44,14 @@ return <h3 className="text-light">Server Error</h3>
               name="options"
               id={`question${index}-option`}
               value={false}
-              onChange={onSelect()}
+              onChange={() =>onSelect(index)}
             />
             <label className="text-primary" htmlFor={`question${index}-option`}>
               {option}
             </label>
-            <div className="check "></div>{" "}
+            <div className="check ">
+
+            </div>
             {/*---checked---- check and uncheck the radiobutton using class */}
           </li>
         ))}

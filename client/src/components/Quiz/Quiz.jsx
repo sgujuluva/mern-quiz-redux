@@ -17,6 +17,11 @@ const dispatch = useDispatch()
     console.log("current state in quiz comp is",state);
   });
 
+  //check radio buttons and pass to parent component quiz
+const onChecked = (check) => {
+  console.log(check)
+}
+
   const onPrevious = () => {
     console.log("on previous click");
     if(trace > 0){
@@ -30,7 +35,7 @@ const dispatch = useDispatch()
     if(trace < queue.length){
 
       dispatch(MoveNextQuestion()) //update the currentquestionindex by 1
-      dispatch(PushAnswer)
+      dispatch(PushAnswer(1))
     }
   };
 
@@ -39,7 +44,7 @@ const dispatch = useDispatch()
       <h1 className="title text-light">Quiz</h1>
 
       {/* display questions */}
-      <Questions />
+      <Questions  onChecked = {onChecked}/>
 
       <div className="grid">
         <button onClick={onPrevious} className="btn prev">
